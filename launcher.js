@@ -1,3 +1,5 @@
+//Made By Jesen N#9071
+
 const place = "C:\\Windows\\System32\\drivers\\etc\\hosts";
 const fs = require("fs");
 const rl = require("readline").createInterface({
