@@ -1,10 +1,16 @@
 # GTPS-Launcher-PC
 GTPS Launcher PC
 
-# How To Use
-1. Download Node JS 
+# ingredients
 https://nodejs.org/en/download/
 
-2. node launcher.js
-3. or you can use the exe file
-https://github.com/Jesen-N/GTPS-Launcher-PC/releases/tag/0.1
+# How to run with cmd
+2. open command prompt/cmd with administrator
+3. cd to launcher file
+4. node launcher.js
+
+# How to make launcher to exe
+1. open command prompt/cmd
+2. cd to launcher file
+3. write npm install pkg --global
+4. write pkg launcher.js
