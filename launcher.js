@@ -61,28 +61,43 @@ let off = `
 #	127.0.0.1       localhost
 #	::1             localhost
 `;
+var loop = function () {
+	rl.question("Press enter to turn on: ", (text) => {
+		if (text == "") {
+			main()
+		} else {
+			loop()
+		}
+	})
+}
 
 console.clear();
-fs.writeFile(place, on, function (err) {
-  if (err) {
-    console.log(
-      "ERROR: Please open the application/command prompt with administrator!!"
-    );
-  } else {
-    console.log(`${nameserver} Launcher Is ON!`);
-    rl.question("Press enter to turn off: ", function (enter) {
-      if (enter === "") {
-        console.clear();
-        fs.writeFile(place, off, function (err) {
-          if (err) {
-            console.log(
-              "ERROR: Please open the application/command prompt with administrator!!"
-            );
-          } else {
-            console.log(`Now ${nameserver} Launcher Is OFF`);
-          }
-        });
-      }
-    });
-  }
-});
+var main = function () {
+  fs.writeFile(place, on, function (err) {
+    if (err) {
+      console.log(
+        "ERROR: Please open the application/command prompt with administrator!!"
+      );
+    } else {
+      console.clear();
+      console.log(`${nameserver} Launcher Is ON!`);
+      rl.question("Press enter to turn off: ", function (enter) {
+        if (enter === "") {
+          console.clear();
+          fs.writeFile(place, off, function (err) {
+            if (err) {
+              console.log(
+                "ERROR: Please open the application/command prompt with administrator!!"
+              );
+            } else {
+              console.log(`${nameserver} Launcher Is OFF`);
+              loop()
+            }
+          });
+        }
+      });
+    }
+  });
+}
+
+main()
